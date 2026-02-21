@@ -7,9 +7,13 @@
 }
 
 body {
-    background-color: #F8FAFC;
-    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
-    color: #2563EB;
+    background-color: #f8fafc;
+    font-family:
+        "Roboto",
+        system-ui,
+        -apple-system,
+        sans-serif;
+    color: #2563eb;
     font-weight: 400;
     line-height: 1.2;
 }
@@ -23,4 +27,21 @@ body {
     padding: 2rem;
     position: relative;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
 }
