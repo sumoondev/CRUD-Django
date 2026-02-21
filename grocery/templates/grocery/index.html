@@ -15,10 +15,26 @@
             href="{% static 'grocery/css/single-item.css' %}"
         />
         <link rel="stylesheet" href="{% static 'grocery/css/items.css' %}" />
-        <link rel="icon" href="{% static 'grocery/favicon.ico' %}" type="image/x-icon">
+        <link
+            rel="icon"
+            href="{% static 'grocery/favicon.ico' %}"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="{% static 'grocery/css/form.css' %}" />
     </head>
     <body>
         <section class="section-center">
+            <form>
+                <h2>grocery bud</h2>
+                <div class="form-control">
+                    <input
+                        type="text"
+                        class="form-input"
+                        placeholder="e.g. eggs"
+                    />
+                    <button type="submit" class="btn">add item</button>
+                </div>
+            </form>
             <!-- Items List -->
             <div class="items">
                 {% for item in items %}
@@ -44,12 +60,22 @@
                     >
                         {{ item.name }}
                     </p>
-                    <a href="#" class="btn icon-btn edit-btn">
+                    <a
+                        {% comment %} href="{% url 'grocery:edit' item.id %}" {% endcomment %}
+                        class="btn icon-btn edit-btn"
+                    >
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
-                    <button class="btn icon-btn remove-btn" type="submit">
-                        <i class="fa-regular fa-trash-can"></i>
-                    </button>
+                    <form
+                        method="POST"
+                        action="{% url 'grocery:delete' item.id %}"
+                        style="display: inline"
+                    >
+                        {% csrf_token %}
+                        <button type="submit" class="btn icon-btn remove-btn">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </form>
                 </div>
                 {% empty %}
                 <p style="text-align: center; color: #888">
