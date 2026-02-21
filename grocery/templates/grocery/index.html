@@ -24,11 +24,13 @@
     </head>
     <body>
         <section class="section-center">
-            <form>
+            <form method="POST" action="{% url 'grocery:add' %}">
+                {% csrf_token %}
                 <h2>grocery bud</h2>
                 <div class="form-control">
                     <input
                         type="text"
+                        name="name"
                         class="form-input"
                         placeholder="e.g. eggs"
                     />
@@ -61,7 +63,9 @@
                         {{ item.name }}
                     </p>
                     <a
-                        {% comment %} href="{% url 'grocery:edit' item.id %}" {% endcomment %}
+                        {% comment %}
+                        href="{% url 'grocery:edit' item.id %}"
+                        {% endcomment %}
                         class="btn icon-btn edit-btn"
                     >
                         <i class="fa-regular fa-pen-to-square"></i>
